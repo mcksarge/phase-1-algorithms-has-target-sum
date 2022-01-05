@@ -42,15 +42,26 @@
   //Method 2 *****************
 
   function hasTargetSum(array, target){
-    let obj = {}
-    
+    let result = []
+    let numIndex = new Map ();
+
     for (i = 0; i < array.length; i++){
-      let difference = target - array[i]
+      let num = array[i];
+      let compliment = target - num
 
-      obj.push([difference, array[i]])
-      console.log(obj)
+      if(numIndex.has(compliment)){
+        result[0]=numIndex.get(compliment);
+        result[1]=i;
+        let sum = result[0]
+        console.log(result[0], result[1])
+        return result
+
+      }
+
+      numIndex.set(num,i)
+
     }
-
+    return !!result.length
 
   };
 
@@ -121,28 +132,28 @@
   // You can run `node index.js` to view these console logs
  // if (require.main === module) {
     // add your own custom tests in here
-    // console.log("Expecting: true");
-    // console.log("=>", hasTargetSum([3, 8, 12, 4, 11, 7], 10));
+    console.log("Expecting: true");
+    console.log("=>", hasTargetSum([3, 8, 12, 4, 11, 7], 10));
   
-    // console.log("");
+    console.log("");
   
-    // console.log("Expecting: true");
-    // console.log("=>", hasTargetSum([22, 19, 4, 6, 30], 25));
+    console.log("Expecting: true");
+    console.log("=>", hasTargetSum([22, 19, 4, 6, 30], 25));
   
-    // console.log("");
+    console.log("");
   
-    // console.log("Expecting: false");
-    // console.log("=>", hasTargetSum([1, 2, 5], 4));
+    console.log("Expecting: false");
+    console.log("=>", hasTargetSum([1, 2, 5], 4));
 
-    // console.log("");
+    console.log("");
 
-    // console.log("Expecting: false");
-    // console.log("=>", hasTargetSum([10, 15, 6, 12, 4], 43));
+    console.log("Expecting: false");
+    console.log("=>", hasTargetSum([10, 15, 6, 12, 4], 43));
 
-    // console.log("");
+    console.log("");
 
-    // console.log("Expecting: true");
-    // console.log("=>", hasTargetSum([1, -2, 5, 3, -7, -3], 0));
+    console.log("Expecting: true");
+    console.log("=>", hasTargetSum([1, -2, 5, 3, -7, -3], 0));
     
     console.log("");
 
